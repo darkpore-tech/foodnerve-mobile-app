@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963149078607",
+    "project_id": "foodnerve-3658e",
+    "storage_bucket": "foodnerve-3658e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963149078607:android:7d5bfd4fd89eb113e3ca3a",
+        "android_client_info": {
+          "package_name": "com.example.food_nerve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963149078607-tog8bksmkk6j0ud9i7ofgpgrkjk70rlb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuTsYEor39zsYJOyuUo1V-GVJWBNTlm9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963149078607-tog8bksmkk6j0ud9i7ofgpgrkjk70rlb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
