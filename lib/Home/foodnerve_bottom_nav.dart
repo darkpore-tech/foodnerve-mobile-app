@@ -41,8 +41,12 @@ class _FoodNerveBottomNavState extends State<FoodNerveBottomNav> {
             ),
             IconButton(
               icon: const Icon(Icons.person),
+<<<<<<< HEAD
               onPressed: () {},
             ),
+=======
+onPressed: () {},            ),
+>>>>>>> 0cb13fabda2fd35eab7240919b95659cb1a47f9f
           ],
           title: const Text('foodnerve',
               style: TextStyle(
