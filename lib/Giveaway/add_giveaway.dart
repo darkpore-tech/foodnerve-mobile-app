@@ -76,7 +76,7 @@ class _AddGiveAwayState extends State<AddGiveAway> {
                             ElevatedButton(
                               onPressed: UploadStatusFreebie,
                               child: const Text(
-                                'Add Giveaway',
+                                'Post',
                               ),
                             ),
                           ],

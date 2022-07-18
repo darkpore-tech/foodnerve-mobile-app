@@ -62,12 +62,9 @@ class _AddListingState extends State<AddListing> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        icon: const Icon(
-          Icons.add_a_photo,
-        ),
-        label: const Text('Add Image'),
+      floatingActionButton: FloatingActionButton(
         onPressed: () => pickImage(),
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
