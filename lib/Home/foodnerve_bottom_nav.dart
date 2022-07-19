@@ -41,8 +41,7 @@ class _FoodNerveBottomNavState extends State<FoodNerveBottomNav> {
             ),
             IconButton(
               icon: const Icon(Icons.person),
-              onPressed: (() => FirebaseAuth.instance.signOut()),
-            ),
+onPressed: () {},            ),
           ],
           title: const Text('foodnerve',
               style: TextStyle(
