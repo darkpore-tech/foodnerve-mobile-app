@@ -176,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       IconButton(
                         icon: const Icon(Icons.video_library),
+                        
                         tooltip: 'Video Playlist',
                         onPressed: () => Navigator.push(
                           context,
@@ -194,33 +195,33 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  _space,
-                  Row(
-                    children: <Widget>[
-                      const Text(
-                        "Volume",
-                        style: TextStyle(fontWeight: FontWeight.w300),
-                      ),
-                      Expanded(
-                        child: Slider(
-                          inactiveColor: Colors.transparent,
-                          value: _volume,
-                          min: 0.0,
-                          max: 100.0,
-                          divisions: 10,
-                          label: '${(_volume).round()}',
-                          onChanged: _isPlayerReady
-                              ? (value) {
-                                  setState(() {
-                                    _volume = value;
-                                  });
-                                  _controller.setVolume(_volume.round());
-                                }
-                              : null,
-                        ),
-                      ),
-                    ],
-                  ),
+                  // _space,
+                  // Row(
+                  //   children: <Widget>[
+                  //     const Text(
+                  //       "Volume",
+                  //       style: TextStyle(fontWeight: FontWeight.w300),
+                  //     ),
+                  //     Expanded(
+                  //       child: Slider(
+                  //         inactiveColor: Colors.transparent,
+                  //         value: _volume,
+                  //         min: 0.0,
+                  //         max: 100.0,
+                  //         divisions: 10,
+                  //         label: '${(_volume).round()}',
+                  //         onChanged: _isPlayerReady
+                  //             ? (value) {
+                  //                 setState(() {
+                  //                   _volume = value;
+                  //                 });
+                  //                 _controller.setVolume(_volume.round());
+                  //               }
+                  //             : null,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   _space,
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 800),

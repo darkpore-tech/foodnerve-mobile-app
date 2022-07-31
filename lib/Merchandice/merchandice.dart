@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_nerve/Merchandice/add_listing.dart';
+import 'package:food_nerve/Merchandice/person.dart';
 import 'package:food_nerve/Merchandice/posts.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:food_nerve/shared/loading.dart';
+
+import '../models/user_profile.dart';
 
 class Merchandice extends StatefulWidget {
   const Merchandice({super.key});
@@ -47,8 +50,7 @@ class _MerchandiceState extends State<Merchandice> {
         body: Container(
           child: postList.isEmpty
               ? const Loading()
-              //const Center(
-              //     child: Text(
+
               //       'No Food Listing Available',
               //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               //     ),
@@ -69,6 +71,7 @@ class _MerchandiceState extends State<Merchandice> {
                 ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.orange.shade700,
           tooltip: 'Add Food Listing',
           onPressed: () {
             Navigator.push(context,

@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:food_nerve/podcast/webview.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:food_nerve/Auth/auth.dart';
 import 'package:food_nerve/Home/foodnerve_bottom_nav.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +24,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      title: 'Foodnerve',
-      theme: ThemeData(backgroundColor: Theme.of(context).primaryColorDark),
+      title: 'FoodNerve',
+      theme: ThemeData().copyWith(
+          backgroundColor: Colors.orange,
+          textTheme:
+              GoogleFonts.questrialTextTheme(Theme.of(context).textTheme)),
       home: const MainPage(),
     );
   }

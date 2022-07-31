@@ -26,6 +26,7 @@ class _AddListingState extends State<AddListing> {
   String? url;
   final formKey = GlobalKey<FormState>();
   final user = FirebaseAuth.instance.currentUser!;
+  var descriptionController = TextEditingController();
 
   Future pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -41,8 +42,13 @@ class _AddListingState extends State<AddListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Food Listing'),
-        centerTitle: true,
+        title: const Text(
+          'Add Food Listing',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.orange[700],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -64,7 +70,10 @@ class _AddListingState extends State<AddListing> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => pickImage(),
-        child: const Icon(Icons.add_a_photo),
+        child: const Icon(
+          Icons.add_a_photo,
+        ),
+        backgroundColor: Colors.green,
       ),
     );
   }
@@ -78,7 +87,6 @@ class _AddListingState extends State<AddListing> {
             return Form(
                 key: formKey,
                 child: Container(
-                  // margin: const EdgeInsets.only(top: 20),
                   padding: const EdgeInsets.only(right: 40, left: 40),
                   child: Column(
                     children: [
@@ -86,79 +94,128 @@ class _AddListingState extends State<AddListing> {
                         image!,
                         // fit: BoxFit.cover,
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Description',
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: TextFormField(
+                          controller: descriptionController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const OutlineInputBorder(),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.orange, width: 1.0),
+                            ),
+                            hintText: 'Description',
+                            isDense: true,
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                          ),
+                          validator: (value) {
+                            return value!.isEmpty
+                                ? 'Description is required'
+                                : null;
+                          },
+                          onSaved: (value) {
+                            _myValue = value!;
+                          },
                         ),
-                        validator: (value) {
-                          return value!.isEmpty
-                              ? 'Description is required'
-                              : null;
-                        },
-                        onSaved: (value) {
-                          _myValue = value!;
-                        },
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Pick up location',
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const OutlineInputBorder(),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.orange, width: 1.0),
+                            ),
+                            hintText: 'Pick up location',
+                            isDense: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                          ),
+                          validator: (location) {
+                            return location!.isEmpty
+                                ? 'Pick up location is required'
+                                : null;
+                          },
+                          onSaved: (location) {
+                            _myLocation = location!;
+                          },
                         ),
-                        validator: (location) {
-                          return location!.isEmpty
-                              ? 'Pick up location is required'
-                              : null;
-                        },
-                        onSaved: (location) {
-                          _myLocation = location!;
-                        },
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        initialValue: userData?.myphone,
-                        decoration: const InputDecoration(
-                          labelText: 'Phone number',
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: TextFormField(
+                          initialValue: userData?.myphone,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const OutlineInputBorder(),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.orange, width: 1.0),
+                            ),
+                            hintText: 'Phone Number',
+                            isDense: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                          ),
+                          validator: (phone) {
+                            return phone!.isEmpty
+                                ? 'Please enter your phone number'
+                                : null;
+                          },
+                          onSaved: (phone) {
+                            _myPhone = phone!;
+                          },
                         ),
-                        validator: (phone) {
-                          return phone!.isEmpty
-                              ? 'Please enter your phone number'
-                              : null;
-                        },
-                        onSaved: (phone) {
-                          _myPhone = phone!;
-                        },
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        initialValue: userData?.myname,
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: TextFormField(
+                          initialValue: userData?.myname,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            enabledBorder: const OutlineInputBorder(),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.orange, width: 1.0),
+                            ),
+                            hintText: 'Name',
+                            isDense: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                          ),
+                          validator: (name) {
+                            return name!.isEmpty
+                                ? 'Please enter your name'
+                                : null;
+                          },
+                          onSaved: (name) {
+                            _myName = name!;
+                          },
                         ),
-                        validator: (name) {
-                          return name!.isEmpty
-                              ? 'Please enter your name'
-                              : null;
-                        },
-                        onSaved: (name) {
-                          _myName = name!;
-                        },
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       ElevatedButton(
                         onPressed: UploadStatusImage,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.fromLTRB(156, 20, 156, 20),
+                          backgroundColor: Colors.green,
+                        ),
                         child: const Text(
-                          'Add Post',
+                          'POST',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -191,6 +248,10 @@ class _AddListingState extends State<AddListing> {
       url = url.toString();
       goToPage();
       saveToDatabase(url);
+      showAlertDialog(context);
+      setState(() {
+        descriptionController.clear();
+      });
     }
   }
 
@@ -220,6 +281,32 @@ class _AddListingState extends State<AddListing> {
       MaterialPageRoute(
         builder: (context) => const Merchandice(),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Thank you!"),
+      content: const Text(
+        "You just saved a soul somewhere",
+      ),
+      actions: [
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange[700],
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'))
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

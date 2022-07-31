@@ -34,3 +34,4 @@ class DatabaseService {
     return usersAccounts.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 }
+

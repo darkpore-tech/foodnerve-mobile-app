@@ -17,15 +17,20 @@ class _AddGiveAwayState extends State<AddGiveAway> {
   late String _myName;
   late String _mymsg;
   final user = FirebaseAuth.instance.currentUser!;
-
   final formKey = GlobalKey<FormState>();
+  var messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Spread Love'),
-          centerTitle: true,
+          title: const Text(
+            'Spread Love',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.orange[700],
         ),
         body: StreamBuilder<UserData>(
             stream: DatabaseService(uid: user.uid).userData,
@@ -35,53 +40,88 @@ class _AddGiveAwayState extends State<AddGiveAway> {
                 return Container(
                   margin: const EdgeInsets.only(top: 50),
                   padding: const EdgeInsets.all(40),
-                  child: Form(
-                      key: formKey,
-                      child: SizedBox(
+                  child: Center(
+                    child: Form(
+                        key: formKey,
                         child: Column(
                           children: [
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Message',
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15),
+                              child: TextFormField(
+                                controller: messageController,
+                                validator: (name) {
+                                  return name!.isEmpty
+                                      ? 'Please enter your message'
+                                      : null;
+                                },
+                                onSaved: (msg) {
+                                  _mymsg = msg!;
+                                },
+                                maxLines: 1,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.orange, width: 1.0),
+                                  ),
+                                  hintText: 'Message',
+                                  isDense: true,
+                                  contentPadding:
+                                      const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                                ),
                               ),
-                              validator: (name) {
-                                return name!.isEmpty
-                                    ? 'Please enter your message'
-                                    : null;
-                              },
-                              onSaved: (msg) {
-                                _mymsg = msg!;
-                              },
                             ),
-                            const SizedBox(
-                              height: 90,
-                            ),
-                            TextFormField(
-                              initialValue: userData?.myname,
-                              decoration: const InputDecoration(
-                                labelText: 'Name',
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15),
+                              child: TextFormField(
+                                initialValue: userData?.myname,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.orange, width: 1.0),
+                                  ),
+                                  hintText: 'Name',
+                                  isDense: true,
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(10, 15, 10, 15),
+                                ),
+                                validator: (name) {
+                                  return name!.isEmpty
+                                      ? 'Please enter your name'
+                                      : null;
+                                },
+                                onSaved: (name) {
+                                  _myName = name!;
+                                },
                               ),
-                              validator: (name) {
-                                return name!.isEmpty
-                                    ? 'Please enter your name'
-                                    : null;
-                              },
-                              onSaved: (name) {
-                                _myName = name!;
-                              },
                             ),
                             const SizedBox(
                               height: 40,
                             ),
                             ElevatedButton(
                               onPressed: UploadStatusFreebie,
+                              style: ElevatedButton.styleFrom(
+                                padding:
+                                    const EdgeInsets.fromLTRB(156, 20, 156, 20),
+                                backgroundColor: Colors.green,
+                              ),
                               child: const Text(
-                                'Post',
+                                'POST',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],
-                        ),
-                      )),
+                        )),
+                  ),
                 );
               } else {
                 return const Loading();
@@ -104,6 +144,10 @@ class _AddGiveAwayState extends State<AddGiveAway> {
     if (validateAndSave()) {
       goToPage();
       saveToDatabase();
+      showAlertDialog(context);
+      setState(() {
+        messageController.clear();
+      });
     }
   }
 
@@ -130,6 +174,32 @@ class _AddGiveAwayState extends State<AddGiveAway> {
       MaterialPageRoute(
         builder: (context) => const GiveAway(),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Thank you!"),
+      content: const Text(
+        "You just saved a soul somewhere",
+      ),
+      actions: [
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange[700],
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'))
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

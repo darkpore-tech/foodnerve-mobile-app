@@ -29,36 +29,47 @@ class _RegisterPageState extends State<RegisterPage> {
   final phoneNumberController = TextEditingController();
   var rememberValue = false;
   bool loading = false;
+  final _enabledBorder = const OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.white, width: 1.0),
+  );
+  final _focusedBorder = const OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.green, width: 1.0),
+  );
+  final _border = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.orange.shade700,
       body: Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Sign up',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                  color: Colors.white),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Form(
-              key: _formKey,
-              child: SingleChildScrollView(
+        padding: const EdgeInsets.all(35),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Register',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                    color: Colors.white),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Form(
+                key: _formKey,
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Expanded(
                           child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            cursorColor: Colors.white,
                             controller: firstNameController,
                             validator: (firstname) {
                               return firstname!.isEmpty
@@ -66,12 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
                                   : null;
                             },
                             decoration: InputDecoration(
-                              hintText: 'First name',
-                              prefixIcon: const Icon(Icons.person),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                                hintText: 'First name',
+                                hintStyle: const TextStyle(color: Colors.white),
+                                prefixIcon: const Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                ),
+                                border: _border,
+                                enabledBorder: _enabledBorder,
+                                focusedBorder: _focusedBorder),
                           ),
                         ),
                         const SizedBox(
@@ -79,14 +93,19 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         Expanded(
                           child: TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            cursorColor: Colors.white,
                             controller: lastNameController,
                             decoration: InputDecoration(
-                              hintText: 'Last name',
-                              prefixIcon: const Icon(Icons.person),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                                hintText: 'Last name',
+                                hintStyle: const TextStyle(color: Colors.white),
+                                prefixIcon: const Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                ),
+                                border: _border,
+                                enabledBorder: _enabledBorder,
+                                focusedBorder: _focusedBorder),
                           ),
                         ),
                       ],
@@ -95,6 +114,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 14,
                     ),
                     TextFormField(
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
                       controller: phoneNumberController,
                       validator: (phoneNumber) {
                         return phoneNumber!.isEmpty
@@ -103,34 +124,44 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                       maxLines: 1,
                       decoration: InputDecoration(
-                        hintText: 'Enter your phone number',
-                        prefixIcon: const Icon(Icons.phone),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                          hintText: 'Enter your phone number',
+                          hintStyle: const TextStyle(color: Colors.white),
+                          prefixIcon: const Icon(
+                            Icons.phone,
+                            color: Colors.white,
+                          ),
+                          border: _border,
+                          enabledBorder: _enabledBorder,
+                          focusedBorder: _focusedBorder),
                     ),
                     const SizedBox(
                       height: 14,
                     ),
                     TextFormField(
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
                       controller: emailController,
                       validator: (value) => EmailValidator.validate(value!)
                           ? null
                           : "Please enter a valid email",
                       maxLines: 1,
                       decoration: InputDecoration(
-                        hintText: 'Enter your email',
-                        prefixIcon: const Icon(Icons.email),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                          hintText: 'Enter your email',
+                          hintStyle: const TextStyle(color: Colors.white),
+                          prefixIcon: const Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
+                          border: _border,
+                          enabledBorder: _enabledBorder,
+                          focusedBorder: _focusedBorder),
                     ),
                     const SizedBox(
                       height: 14,
                     ),
                     TextFormField(
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
                       controller: passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -141,12 +172,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       maxLines: 1,
                       obscureText: true,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock),
-                        hintText: 'Enter your password (6+ char long)',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                          prefixIcon: const Icon(
+                            Icons.lock,
+                            color: Colors.white,
+                          ),
+                          hintText: 'Enter your password (6+ char long)',
+                          hintStyle: const TextStyle(color: Colors.white),
+                          border: _border,
+                          enabledBorder: _enabledBorder,
+                          focusedBorder: _focusedBorder),
                     ),
                     const SizedBox(
                       height: 14,
@@ -161,6 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                        backgroundColor: Colors.green,
                       ),
                       child: const Text(
                         'Sign up',
@@ -186,16 +221,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                           child: const Text(
                             'Sign in',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:food_nerve/Giveaway/freebies.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:food_nerve/models/database.dart';
+import 'package:food_nerve/models/user_profile.dart';
 import 'package:food_nerve/shared/loading.dart';
 
 class GiveAway extends StatefulWidget {
@@ -59,12 +60,16 @@ class _GiveAwayState extends State<GiveAway> {
                 ),
         ),
         floatingActionButton: FloatingActionButton(
-            tooltip: 'Do Giveaway',
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AddGiveAway()));
-            },
-            child: const Icon(Icons.add)));
+          backgroundColor: Colors.orange.shade700,
+          tooltip: 'Do Giveaway',
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddGiveAway()));
+          },
+          child: const Icon(
+            Icons.add,
+          ),
+        ));
   }
 
   // ignore: non_constant_identifier_names

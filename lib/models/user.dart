@@ -10,10 +10,9 @@ class UserData {
   final String mymessage;
   final String myphone;
 
-  UserData({
-    required this.uid,
-    required this.myname,
-    required this.mymessage,
-    required this.myphone
-  });
+  UserData(
+      {required this.uid,
+      required this.myname,
+      required this.mymessage,
+      required this.myphone});
 }
