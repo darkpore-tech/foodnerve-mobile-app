@@ -1,5 +1,5 @@
 This is the full source code of the foodnerve app
 
-Built with FLutter and Firebase
+Built with Flutter and Firebase
 
-![appimg](https://user-images.githubusercontent.com/42071241/180260624-a78d30c9-3075-4f29-b89b-11e4ac886c74.png)
+![Freebies](https://user-images.githubusercontent.com/42071241/182033193-cc6c3efc-5f04-4af6-8ad6-b770d46532be.png)
