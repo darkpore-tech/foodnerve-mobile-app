@@ -30,7 +30,7 @@ class _AddGiveAwayState extends State<AddGiveAway> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor: Colors.orange[700],
+          backgroundColor: Colors.greenAccent,
         ),
         body: StreamBuilder<UserData>(
             stream: DatabaseService(uid: user.uid).userData,
@@ -109,8 +109,8 @@ class _AddGiveAwayState extends State<AddGiveAway> {
                               onPressed: UploadStatusFreebie,
                               style: ElevatedButton.styleFrom(
                                 padding:
-                                    const EdgeInsets.fromLTRB(156, 20, 156, 20),
-                                backgroundColor: Colors.green,
+                                    const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                                backgroundColor: Colors.greenAccent,
                               ),
                               child: const Text(
                                 'POST',
@@ -187,7 +187,7 @@ class _AddGiveAwayState extends State<AddGiveAway> {
       actions: [
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange[700],
+              backgroundColor: Colors.greenAccent
             ),
             onPressed: () => Navigator.of(context).pop(),
             child: const Text('OK'))

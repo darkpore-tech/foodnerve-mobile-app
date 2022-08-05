@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'FoodNerve',
       theme: ThemeData().copyWith(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.greenAccent,
           textTheme:
               GoogleFonts.questrialTextTheme(Theme.of(context).textTheme)),
       home: const MainPage(),

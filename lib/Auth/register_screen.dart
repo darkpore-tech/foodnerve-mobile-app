@@ -42,196 +42,201 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade700,
+      backgroundColor: Colors.greenAccent,
       body: Container(
         padding: const EdgeInsets.all(35),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Register',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40,
-                    color: Colors.white),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            style: const TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
-                            controller: firstNameController,
-                            validator: (firstname) {
-                              return firstname!.isEmpty
-                                  ? 'First name is required'
-                                  : null;
-                            },
-                            decoration: InputDecoration(
-                                hintText: 'First name',
-                                hintStyle: const TextStyle(color: Colors.white),
-                                prefixIcon: const Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                ),
-                                border: _border,
-                                enabledBorder: _enabledBorder,
-                                focusedBorder: _focusedBorder),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'Register',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
+                              controller: firstNameController,
+                              validator: (firstname) {
+                                return firstname!.isEmpty
+                                    ? 'First name is required'
+                                    : null;
+                              },
+                              decoration: InputDecoration(
+                                  hintText: 'First name',
+                                  hintStyle:
+                                      const TextStyle(color: Colors.white),
+                                  prefixIcon: const Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                  ),
+                                  border: _border,
+                                  enabledBorder: _enabledBorder,
+                                  focusedBorder: _focusedBorder),
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: TextFormField(
-                            style: const TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
-                            controller: lastNameController,
-                            decoration: InputDecoration(
-                                hintText: 'Last name',
-                                hintStyle: const TextStyle(color: Colors.white),
-                                prefixIcon: const Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                ),
-                                border: _border,
-                                enabledBorder: _enabledBorder,
-                                focusedBorder: _focusedBorder),
+                          const SizedBox(
+                            width: 20,
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    TextFormField(
-                      style: const TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
-                      controller: phoneNumberController,
-                      validator: (phoneNumber) {
-                        return phoneNumber!.isEmpty
-                            ? 'Phone number is required'
-                            : null;
-                      },
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                          hintText: 'Enter your phone number',
-                          hintStyle: const TextStyle(color: Colors.white),
-                          prefixIcon: const Icon(
-                            Icons.phone,
-                            color: Colors.white,
+                          Expanded(
+                            child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
+                              controller: lastNameController,
+                              decoration: InputDecoration(
+                                  hintText: 'Last name',
+                                  hintStyle:
+                                      const TextStyle(color: Colors.white),
+                                  prefixIcon: const Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                  ),
+                                  border: _border,
+                                  enabledBorder: _enabledBorder,
+                                  focusedBorder: _focusedBorder),
+                            ),
                           ),
-                          border: _border,
-                          enabledBorder: _enabledBorder,
-                          focusedBorder: _focusedBorder),
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    TextFormField(
-                      style: const TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
-                      controller: emailController,
-                      validator: (value) => EmailValidator.validate(value!)
-                          ? null
-                          : "Please enter a valid email",
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                          hintText: 'Enter your email',
-                          hintStyle: const TextStyle(color: Colors.white),
-                          prefixIcon: const Icon(
-                            Icons.email,
-                            color: Colors.white,
-                          ),
-                          border: _border,
-                          enabledBorder: _enabledBorder,
-                          focusedBorder: _focusedBorder),
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    TextFormField(
-                      style: const TextStyle(color: Colors.white),
-                      cursorColor: Colors.white,
-                      controller: passwordController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                      maxLines: 1,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                          ),
-                          hintText: 'Enter your password (6+ char long)',
-                          hintStyle: const TextStyle(color: Colors.white),
-                          border: _border,
-                          enabledBorder: _enabledBorder,
-                          focusedBorder: _focusedBorder),
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          setState(() => loading = true);
-                          signUp();
-                          sendToFirebase();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                        backgroundColor: Colors.green,
+                        ],
                       ),
-                      child: const Text(
-                        'Sign up',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      const SizedBox(
+                        height: 14,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Already registered?',
+                      TextFormField(
+                        style: const TextStyle(color: Colors.white),
+                        cursorColor: Colors.white,
+                        controller: phoneNumberController,
+                        validator: (phoneNumber) {
+                          return phoneNumber!.isEmpty
+                              ? 'Phone number is required'
+                              : null;
+                        },
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                            hintText: 'Enter your phone number',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                            ),
+                            border: _border,
+                            enabledBorder: _enabledBorder,
+                            focusedBorder: _focusedBorder),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      TextFormField(
+                        style: const TextStyle(color: Colors.white),
+                        cursorColor: Colors.white,
+                        controller: emailController,
+                        validator: (value) => EmailValidator.validate(value!)
+                            ? null
+                            : "Please enter a valid email",
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                            hintText: 'Enter your email',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: Colors.white,
+                            ),
+                            border: _border,
+                            enabledBorder: _enabledBorder,
+                            focusedBorder: _focusedBorder),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      TextFormField(
+                        style: const TextStyle(color: Colors.white),
+                        cursorColor: Colors.white,
+                        controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          return null;
+                        },
+                        maxLines: 1,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.lock,
+                              color: Colors.white,
+                            ),
+                            hintText: 'Enter your password (6+ char long)',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            border: _border,
+                            enabledBorder: _enabledBorder,
+                            focusedBorder: _focusedBorder),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() => loading = true);
+                            signUp();
+                            sendToFirebase();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          backgroundColor: Colors.orange,
+                        ),
+                        child: const Text(
+                          'Sign up',
                           style: TextStyle(
-                              color: Colors.white, fontStyle: FontStyle.italic),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            widget.toggleView();
-                          },
-                          child: const Text(
-                            'Sign in',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Already registered?',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                                fontStyle: FontStyle.italic),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            ],
+                          TextButton(
+                            onPressed: () {
+                              widget.toggleView();
+                            },
+                            child: const Text(
+                              'Sign in',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

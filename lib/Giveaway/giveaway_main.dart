@@ -60,7 +60,7 @@ class _GiveAwayState extends State<GiveAway> {
                 ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.orange.shade700,
+          backgroundColor: Colors.greenAccent,
           tooltip: 'Do Giveaway',
           onPressed: () {
             Navigator.push(context,

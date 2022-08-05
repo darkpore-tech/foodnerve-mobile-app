@@ -48,7 +48,7 @@ class _AddListingState extends State<AddListing> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.orange[700],
+        backgroundColor: Colors.greenAccent,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -69,12 +69,11 @@ class _AddListingState extends State<AddListing> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => pickImage(),
-        child: const Icon(
-          Icons.add_a_photo,
-        ),
-        backgroundColor: Colors.green,
-      ),
+          onPressed: () => pickImage(),
+          child: const Icon(
+            Icons.add_a_photo,
+          ),
+          backgroundColor: Colors.greenAccent),
     );
   }
 
@@ -208,8 +207,8 @@ class _AddListingState extends State<AddListing> {
                       ElevatedButton(
                         onPressed: UploadStatusImage,
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(156, 20, 156, 20),
-                          backgroundColor: Colors.green,
+                          padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                          backgroundColor: Colors.greenAccent,
                         ),
                         child: const Text(
                           'POST',

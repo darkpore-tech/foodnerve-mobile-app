@@ -19,11 +19,10 @@ class FoodNerveDrawer extends StatelessWidget {
           if (snapshot.hasData) {
             UserData? userData = snapshot.data;
             return Drawer(
-                // backgroundColor: Colors.orange[700],
                 child: ListView(
               children: [
                 DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.orange[700]),
+                  decoration: BoxDecoration(color: Colors.greenAccent),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,9 +39,10 @@ class FoodNerveDrawer extends StatelessWidget {
                         child: Text(
                           userData!.myname,
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 12),
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Padding(
@@ -50,9 +50,10 @@ class FoodNerveDrawer extends StatelessWidget {
                         child: Text(
                           user.email!,
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 12),
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -77,13 +78,12 @@ class FoodNerveDrawer extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.info_outlined,
-                    color: Colors.grey[600],
+                    color: Colors.black,
                   ),
                   label: Text(
                     'About Us',
                     style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 )),
@@ -98,13 +98,12 @@ class FoodNerveDrawer extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.contact_phone_outlined,
-                    color: Colors.grey[600],
+                    color: Colors.black,
                   ),
                   label: Text(
                     'Contact Support',
                     style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 )),
@@ -113,13 +112,12 @@ class FoodNerveDrawer extends StatelessWidget {
                   onPressed: () {},
                   icon: Icon(
                     Icons.question_answer_outlined,
-                    color: Colors.grey[600],
+                    color: Colors.black,
                   ),
                   label: Text(
                     'FAQs',
                     style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 )),
@@ -128,20 +126,19 @@ class FoodNerveDrawer extends StatelessWidget {
                 ),
                 Divider(
                   thickness: 0.6,
-                  color: Colors.grey[600],
+                  color: Colors.black,
                 ),
                 ListTile(
                     leading: TextButton.icon(
                   onPressed: (() => _showAlertDialog(context)),
                   icon: Icon(
                     Icons.logout_outlined,
-                    color: Colors.grey[600],
+                    color: Colors.black,
                   ),
                   label: Text(
                     'Log Out',
                     style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 )),
@@ -163,13 +160,13 @@ class FoodNerveDrawer extends StatelessWidget {
       actions: [
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green[700],
+              backgroundColor: Colors.greenAccent,
             ),
             onPressed: () => Navigator.of(context).pop(),
             child: const Text('No')),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red[700],
+              backgroundColor: Colors.orange,
             ),
             onPressed: () {
               Navigator.of(context).pop();

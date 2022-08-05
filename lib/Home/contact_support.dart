@@ -27,7 +27,7 @@ class _Contact_SupportState extends State<Contact_Support> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.orange[700],
+        backgroundColor: Colors.greenAccent,
       ),
       body: Center(
         child: Container(
@@ -87,8 +87,8 @@ class _Contact_SupportState extends State<Contact_Support> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(137, 20, 137, 20),
-                          backgroundColor: Colors.green,
+                          padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                          backgroundColor: Colors.greenAccent,
                         ),
                         child: const Text(
                           'SUBMIT',
